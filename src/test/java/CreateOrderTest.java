@@ -32,7 +32,7 @@ public class CreateOrderTest extends BaseTest {
         OrderModel createOrderRequest = orderApi.createOrder(token, createOrder, 200);
         Assert.assertTrue(createOrderRequest.getSuccess());
         Assert.assertNotNull(createOrderRequest.getName());
-        Assert.assertNotNull(createOrderRequest.getOrder().getNumber());
+        Assert.assertTrue(createOrderRequest.getOrder().getNumber() > 0);
     }
 
     @DisplayName("Создание заказа без авторизации")
@@ -50,7 +50,7 @@ public class CreateOrderTest extends BaseTest {
         OrderModel createOrderRequest = orderApi.createOrderWithOutToken(createOrder, 200);
         Assert.assertTrue(createOrderRequest.getSuccess());
         Assert.assertNotNull(createOrderRequest.getName());
-        Assert.assertNotNull(createOrderRequest.getOrder().getNumber());
+        Assert.assertTrue(createOrderRequest.getOrder().getNumber() > 0);
     }
 
     @DisplayName("Создание заказа без ингредиентов")

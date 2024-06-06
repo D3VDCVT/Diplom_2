@@ -33,11 +33,11 @@ public class GetOrderTest extends BaseTest{
         Assert.assertEquals(firstIngredient, getOrderResponse.getOrders().get(0).getIngredients().get(0));
         Assert.assertEquals(secondIngredient, getOrderResponse.getOrders().get(0).getIngredients().get(1));
         Assert.assertNotNull(getOrderResponse.getOrders().get(0).getStatus());
-        Assert.assertNotNull(getOrderResponse.getOrders().get(0).getNumber());
+        Assert.assertTrue(getOrderResponse.getOrders().get(0).getNumber() > 0);
         Assert.assertNotNull(getOrderResponse.getOrders().get(0).getCreatedAt());
         Assert.assertNotNull(getOrderResponse.getOrders().get(0).getUpdatedAt());
-        Assert.assertNotNull(getOrderResponse.getTotal());
-        Assert.assertNotNull(getOrderResponse.getTotalToday());
+        Assert.assertTrue(getOrderResponse.getTotal() > 0);
+        Assert.assertTrue(getOrderResponse.getTotalToday() > 0);
     }
 
     @DisplayName("Получение заказа без авторизации")
